@@ -145,6 +145,37 @@
 </tr>
 </tbody>
 </table>
+<h2 id="晚自习补课"><a href="#晚自习补课" class="headerlink" title="晚自习补课"></a>晚自习补课</h2><ul>
+<li>jsonp</li>
+<li>nvm</li>
+<li>nrm</li>
+<li>Yarn</li>
+</ul>
+<h3 id="jsonp"><a href="#jsonp" class="headerlink" title="jsonp"></a>jsonp</h3><h3 id="nvm"><a href="#nvm" class="headerlink" title="nvm"></a>nvm</h3><p>Node Version Management</p>
+<ul>
+<li>nvm list 查看所有已安装的 node 版本</li>
+<li>nvm install 版本号 安装指定版本的 node</li>
+<li>nvm use 版本号 切换到指定版本号</li>
+<li>nvm proxy 代理地址 配置代理进行下载</li>
+</ul>
+<h3 id="nrm（node-registry-manager）"><a href="#nrm（node-registry-manager）" class="headerlink" title="nrm（node registry manager）"></a>nrm（node registry manager）</h3><p>使用淘宝的 cnpm 镜像源下载：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save express --registry=https://registry.npm.taobao.org</div></pre></td></tr></table></figure>
+<p>第一：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g nrm</div></pre></td></tr></table></figure>
+<p>基本使用：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
+<h3 id="Yarn"><a href="#Yarn" class="headerlink" title="Yarn"></a>Yarn</h3><p>Yarn 是一个 Facebook 开源的一个类似于 npm 的一个包管理工具，也就是 npm 能做的，<br>yarn 也能做。</p>
+<p>安装：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install -g yarn</div></pre></td></tr></table></figure>
+<p>使用：</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># npm init</span></div><div class="line">yarn init</div><div class="line"></div><div class="line"><span class="comment"># npm install --save 包名</span></div><div class="line">yarn add 包名</div><div class="line"></div><div class="line"><span class="comment"># 离线安装</span></div><div class="line">yarn add 包名@版本号 --offline</div><div class="line"></div><div class="line"><span class="comment"># npm install</span></div><div class="line">yarn install</div><div class="line"></div><div class="line"><span class="comment"># npm uninstall 包名</span></div><div class="line">yarn remove 包名</div><div class="line"></div><div class="line"><span class="comment"># npm install -g 包名</span></div><div class="line">yarn global add 包名</div><div class="line"></div><div class="line"><span class="comment"># npm uninstall -g 包名</span></div><div class="line">yarn global remove 包名</div></pre></td></tr></table></figure>
+<h2 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h2><ol>
+<li>能掌握理解 Express 中间件执行机制并举例</li>
+<li>能掌握利用 Express 中间件处理网站 404</li>
+<li>能掌握 Express 中间件统一处理全局错误</li>
+<li>能掌握 Nunjucks 模板引擎的基本使用（布局功能）</li>
+<li>能掌握利用 Express 中间件解析表单 POST 请求体</li>
+</ol>
 
     </section>
     <footer class="post-footer">
