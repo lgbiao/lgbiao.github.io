@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>JavaScript高级 | Moon</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Moon">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Moon</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2017-02-16T13:34:27.000Z" itemprop="datePublished">
+          2017-02-16
+      </time>
+    
+</span>
+    <h1 class="post-title">JavaScript高级</h1>
+    <section class="post-content">
+      <h1 id="JavaScript高级内容"><a href="#JavaScript高级内容" class="headerlink" title="JavaScript高级内容"></a>JavaScript高级内容</h1><h2 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h2><p>在函数内部直接或者间接的调用自己就是递归</p>
+<h3 id="递归的要素"><a href="#递归的要素" class="headerlink" title="递归的要素"></a>递归的要素</h3><ol>
+<li><p>自己调用自己</p>
+</li>
+<li><p>要有结束条件</p>
+</li>
+</ol>
+<h3 id="化归思想"><a href="#化归思想" class="headerlink" title="化归思想"></a>化归思想</h3><p>化繁为简，化难为易的过程，化是转化，归是归结。</p>
+<h3 id="练习"><a href="#练习" class="headerlink" title="练习:"></a>练习:</h3><ul>
+<li><p>求前n项和</p>
+</li>
+<li><p>求n!</p>
+</li>
+<li><p>求n的m次方（求幂）</p>
+</li>
+<li><p>斐波那契数列</p>
+</li>
+</ul>
+<h3 id="递归获取后代元素"><a href="#递归获取后代元素" class="headerlink" title="递归获取后代元素"></a>递归获取后代元素</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">getChildren</span>(<span class="params">ele</span>)</span>&#123;</div><div class="line"></div><div class="line">     <span class="keyword">var</span> result = [];</div><div class="line"></div><div class="line">     <span class="keyword">var</span> children = ele.children;</div><div class="line"></div><div class="line">     <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; children.length; i++)&#123;</div><div class="line"></div><div class="line">         <span class="keyword">var</span> child = children[i];</div><div class="line"></div><div class="line">         result.push(child);</div><div class="line"></div><div class="line">         <span class="keyword">var</span> temp = getChildren(child);</div><div class="line"></div><div class="line">         result = result.concat(temp);</div><div class="line"></div><div class="line">      &#125;</div><div class="line"></div><div class="line">     <span class="keyword">return</span> result;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="作用域"><a href="#作用域" class="headerlink" title="作用域"></a>作用域</h2><h3 id="什么是作用域？"><a href="#什么是作用域？" class="headerlink" title="什么是作用域？"></a>什么是作用域？</h3><p>变量的作用范围就是作用域</p>
+<h3 id="什么是词法作用域？（词法作用域又叫静态作用域）"><a href="#什么是词法作用域？（词法作用域又叫静态作用域）" class="headerlink" title="什么是词法作用域？（词法作用域又叫静态作用域）"></a>什么是词法作用域？（词法作用域又叫静态作用域）</h3><p>代码在写好的时候，根据代码的书写结构，就可以确定变量的作用范围，这种作用域，就是词法作用域</p>
+<h3 id="什么是块级作用域？"><a href="#什么是块级作用域？" class="headerlink" title="什么是块级作用域？"></a>什么是块级作用域？</h3><p>使用代码块限定的作用域就是块级作用域，js中没有块级作用域</p>
+<h3 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h3><p>函数可以创建作用域，函数中又可以声明函数，这样就形成了作用域套作用域的连式结构，称作作用域链</p>
+<h3 id="变量的搜索原则"><a href="#变量的搜索原则" class="headerlink" title="变量的搜索原则"></a>变量的搜索原则</h3><ol>
+<li><p>现在使用变量的作用域中进行查找，如果找到了就直接使用</p>
+</li>
+<li><p>如果没有找到，就去上级作用域链中进行查找，如果找到了就直接使用</p>
+</li>
+<li><p>如果没有找到，就沿着作用域链一直向上查找，直到找到全局作用域</p>
+</li>
+</ol>
+<h3 id="JS代码执行过程"><a href="#JS代码执行过程" class="headerlink" title="JS代码执行过程"></a>JS代码执行过程</h3><ol>
+<li><p>预解析</p>
+</li>
+<li><p>执行</p>
+</li>
+</ol>
+<h3 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h3><p>在js代码预解析的阶段，会将所有的变量声明以及函数声明提升到其所在的作用域的最顶上，这就是变量提升（Hoisting）</p>
+<h3 id="变量提升的特殊情况"><a href="#变量提升的特殊情况" class="headerlink" title="变量提升的特殊情况"></a>变量提升的特殊情况</h3><ol>
+<li><p>函数同名：都提升，后面的会覆盖前面的</p>
+</li>
+<li><p>函数与变量同名： 只提升函数，忽略变量声明</p>
+</li>
+<li><p>变量提升分作用域</p>
+</li>
+<li><p>变量提升分段（script标签）</p>
+</li>
+<li><p>条件式函数声明： 会被当做函数表达式处理，只提升函数名称，函数体不提升</p>
+</li>
+<li><p>形参的赋值是在变量提升过程之前</p>
+</li>
+</ol>
+<h2 id="闭包"><a href="#闭包" class="headerlink" title="闭包"></a>闭包</h2><h3 id="闭包的概念"><a href="#闭包的概念" class="headerlink" title="闭包的概念"></a>闭包的概念</h3><p>可以访问独立数据的函数！</p>
+<h3 id="闭包要解决的问题"><a href="#闭包要解决的问题" class="headerlink" title="闭包要解决的问题"></a>闭包要解决的问题</h3><p>在函数外部无法访问函数内部声明的变量</p>
+<h3 id="闭包的基本模型"><a href="#闭包的基本模型" class="headerlink" title="闭包的基本模型"></a>闭包的基本模型</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">outer</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">     <span class="keyword">var</span> data = <span class="string">""</span>;</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">function</span> <span class="title">inner</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">         <span class="keyword">return</span> data;</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="keyword">return</span> inner;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="闭包的原理"><a href="#闭包的原理" class="headerlink" title="闭包的原理"></a>闭包的原理</h3><p>作用域，变量的访问规则，上级作用域中无法直接访问下级作用域中的变量，但是下级作用域可以直接访问上级作用域中变量</p>
+<h3 id="闭包的用途"><a href="#闭包的用途" class="headerlink" title="闭包的用途"></a>闭包的用途</h3><ol>
+<li><p>保护变量，增加对于变量赋值的时候的校验逻辑</p>
+</li>
+<li><p>给函数新增一个私有的变量</p>
+</li>
+</ol>
+<h3 id="for循环注册点击事件以及for循环setTimeout的问题"><a href="#for循环注册点击事件以及for循环setTimeout的问题" class="headerlink" title="for循环注册点击事件以及for循环setTimeout的问题"></a>for循环注册点击事件以及for循环setTimeout的问题</h3><h2 id="缓存"><a href="#缓存" class="headerlink" title="缓存"></a>缓存</h2><p>将数据进行临时的存储，以提升访问效率</p>
+<h3 id="常见的缓存"><a href="#常见的缓存" class="headerlink" title="常见的缓存"></a>常见的缓存</h3><ol>
+<li><p>浏览器缓存</p>
+</li>
+<li><p>硬件缓存</p>
+</li>
+<li><p>CDN</p>
+</li>
+<li><p>数据库缓存</p>
+</li>
+</ol>
+<h3 id="缓存解决递归实现的斐波那契数列存在的性能问题（重点）"><a href="#缓存解决递归实现的斐波那契数列存在的性能问题（重点）" class="headerlink" title="缓存解决递归实现的斐波那契数列存在的性能问题（重点）"></a>缓存解决递归实现的斐波那契数列存在的性能问题（重点）</h3><h3 id="实现jQuery缓存"><a href="#实现jQuery缓存" class="headerlink" title="实现jQuery缓存"></a>实现jQuery缓存</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createCache</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">     <span class="keyword">var</span> cache = &#123;&#125;;</div><div class="line"></div><div class="line">     <span class="keyword">var</span> keys = [];</div><div class="line"></div><div class="line">     <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">key, value</span>)</span>&#123;</div><div class="line"></div><div class="line">    </div><div class="line"></div><div class="line">     <span class="keyword">if</span>(value != <span class="literal">undefined</span>)&#123;</div><div class="line"></div><div class="line">         cache[key] = value;</div><div class="line"></div><div class="line">         keys.push(key);</div><div class="line"></div><div class="line">     <span class="keyword">if</span>(keys.length &gt; <span class="number">20</span>)&#123;</div><div class="line"></div><div class="line">         <span class="keyword">delete</span> cache[keys.shift()];</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">return</span> cache[key];</div><div class="line"></div><div class="line"> &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h3 id="jQuery的缓存源码"><a href="#jQuery的缓存源码" class="headerlink" title="jQuery的缓存源码"></a>jQuery的缓存源码</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">createCache</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">     <span class="keyword">var</span> keys = [];</div><div class="line"></div><div class="line">     <span class="function"><span class="keyword">function</span> <span class="title">cache</span>(<span class="params">key, value</span>)</span>&#123;</div><div class="line"></div><div class="line">         <span class="keyword">if</span>(keys.push(key + <span class="string">" "</span>) &gt; <span class="number">20</span>)&#123;</div><div class="line"></div><div class="line">             <span class="keyword">delete</span> cache[keys.shift()];</div><div class="line"></div><div class="line">         &#125;</div><div class="line"></div><div class="line">         <span class="keyword">return</span> (cache[key + <span class="string">" "</span>] = value);</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line">     <span class="keyword">return</span> cache;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="沙箱"><a href="#沙箱" class="headerlink" title="沙箱"></a>沙箱</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">(<span class="function"><span class="keyword">function</span>(<span class="params">window</span>)</span>&#123;</div><div class="line"></div><div class="line"> <span class="comment">//变量声明</span></div><div class="line"></div><div class="line"> <span class="comment">//功能代码</span></div><div class="line"></div><div class="line"> <span class="comment">//如果需要，使用window向外界暴露接口</span></div><div class="line"></div><div class="line">&#125;)(<span class="built_in">window</span>)</div></pre></td></tr></table></figure>
+<h3 id="传参的目的"><a href="#传参的目的" class="headerlink" title="传参的目的"></a>传参的目的</h3><ol>
+<li><p>利于代码压缩</p>
+</li>
+<li><p>实现逻辑隔离</p>
+</li>
+</ol>
+<h3 id="沙箱的用途"><a href="#沙箱的用途" class="headerlink" title="沙箱的用途"></a>沙箱的用途</h3><ol>
+<li><p>框架</p>
+</li>
+<li><p>组件</p>
+</li>
+<li><p>插件</p>
+</li>
+</ol>
+<h2 id="函数的调用模式"><a href="#函数的调用模式" class="headerlink" title="函数的调用模式"></a>函数的调用模式</h2><h3 id="函数调用模式"><a href="#函数调用模式" class="headerlink" title="函数调用模式"></a>函数调用模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">函数名();</div><div class="line"></div><div class="line"><span class="comment">//this---&gt;window</span></div></pre></td></tr></table></figure>
+<h3 id="方法调用模式"><a href="#方法调用模式" class="headerlink" title="方法调用模式"></a>方法调用模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">对象.方法名();</div><div class="line"></div><div class="line"><span class="comment">//this----&gt;调用该方法的对象</span></div></pre></td></tr></table></figure>
+<h3 id="构造函数调用模式"><a href="#构造函数调用模式" class="headerlink" title="构造函数调用模式"></a>构造函数调用模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">new</span> 函数名();</div><div class="line"></div><div class="line"><span class="comment">//this----&gt; new创建出来的实例</span></div></pre></td></tr></table></figure>
+<h3 id="上下文调用模式"><a href="#上下文调用模式" class="headerlink" title="上下文调用模式"></a>上下文调用模式</h3><h3 id="工厂模式和寄生模式创建对象（只是调用模式不同）"><a href="#工厂模式和寄生模式创建对象（只是调用模式不同）" class="headerlink" title="工厂模式和寄生模式创建对象（只是调用模式不同）"></a>工厂模式和寄生模式创建对象（只是调用模式不同）</h3><h2 id="上下文调用模式-1"><a href="#上下文调用模式-1" class="headerlink" title="上下文调用模式"></a>上下文调用模式</h2><h3 id="call"><a href="#call" class="headerlink" title="call"></a>call</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">函数名.call(<span class="keyword">this</span>要指向的对象, arg1..argN);</div><div class="line"></div><div class="line"><span class="comment">//1. 调用函数</span></div><div class="line"></div><div class="line"><span class="comment">//2. 将this指向第一个参数</span></div><div class="line"></div><div class="line"><span class="comment">//3. 将第二个及之后的所有的参数，作为实参依次传递给函数</span></div></pre></td></tr></table></figure>
+<h3 id="apply"><a href="#apply" class="headerlink" title="apply"></a>apply</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">函数名.apply(<span class="keyword">this</span>要指向的对象, 数组或者伪数组);</div><div class="line"></div><div class="line"><span class="comment">//1. 调用函数</span></div><div class="line"></div><div class="line"><span class="comment">//2. 将this指向第一个参数</span></div><div class="line"></div><div class="line"><span class="comment">//3. 将第二个参数中的数组或者伪数组，拆解开，将所有的元素依次作为实参依次传递给函数</span></div></pre></td></tr></table></figure>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><ol>
+<li><p>如果第一个参数为null或者Undefined，this指向window</p>
+</li>
+<li><p>如果第一个参数为值类型的数据，就会将该数据转换成对应的引用类型的数据，再讲this指向该引用类型数据</p>
+</li>
+</ol>
+<h3 id="tip"><a href="#tip" class="headerlink" title="tip"></a>tip</h3><p>一般情况下apply方法的传参特性会非常常用！！！</p>
+<h3 id="练习-1"><a href="#练习-1" class="headerlink" title="练习"></a>练习</h3><ol>
+<li><p>转换伪数组</p>
+</li>
+<li><p>求数组最大值</p>
+</li>
+</ol>
+<h2 id="forEach和map"><a href="#forEach和map" class="headerlink" title="forEach和map"></a>forEach和map</h2><h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">数组.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;&#125;)</div><div class="line"></div><div class="line"><span class="comment">//遍历数组，执行回调函数</span></div><div class="line"></div><div class="line"><span class="comment">//value:当前正在遍历的元素</span></div><div class="line"></div><div class="line"><span class="comment">//index:当前正在遍历的元素的索引</span></div><div class="line"></div><div class="line"><span class="comment">//arr：当前正在遍历的数组</span></div></pre></td></tr></table></figure>
+<h3 id="map"><a href="#map" class="headerlink" title="map"></a>map</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"></div><div class="line">数组.map(<span class="function"><span class="keyword">function</span>(<span class="params">value, index, arr</span>)</span>&#123;&#125;)</div><div class="line"></div><div class="line"><span class="comment">//遍历数组，执行回调函数</span></div><div class="line"></div><div class="line"><span class="comment">//value:当前正在遍历的元素</span></div><div class="line"></div><div class="line"><span class="comment">//index:当前正在遍历的元素的索引</span></div><div class="line"></div><div class="line"><span class="comment">//arr：当前正在遍历的数组</span></div></pre></td></tr></table></figure>
+<h3 id="map的返回值"><a href="#map的返回值" class="headerlink" title="map的返回值"></a>map的返回值</h3><p>将每次执行回调函数的返回值，组合成一个新的数组，作为map方法的返回值！</p>
+<h3 id="map的练习"><a href="#map的练习" class="headerlink" title="map的练习"></a>map的练习</h3><ol>
+<li><p>将数组中的元素转成字符串</p>
+</li>
+<li><p>求最大值</p>
+</li>
+<li><p>生成随机数</p>
+</li>
+</ol>
+<h2 id="Object-defineProperty"><a href="#Object-defineProperty" class="headerlink" title="Object.defineProperty"></a>Object.defineProperty</h2><p>用来给对象添加属性的</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">Object</span>.defineProperty(obj, propertyName, descriptor);</div><div class="line"></div><div class="line"><span class="comment">//obj 就是要给谁添加属性</span></div><div class="line"></div><div class="line"><span class="comment">//propertyName 要添加的属性名</span></div><div class="line"></div><div class="line"><span class="comment">//descriptor 属性的描述信息，也就是特性集合，是一个对象哦~</span></div></pre></td></tr></table></figure>
+<h3 id="descriptor对象中的属性"><a href="#descriptor对象中的属性" class="headerlink" title="descriptor对象中的属性"></a>descriptor对象中的属性</h3><ul>
+<li><p>writable 默认为false，表示属性是否可写</p>
+</li>
+<li><p>configurable 默认为false， 表示属性是否可以配置（删除）</p>
+</li>
+<li><p>enumerable 默认为false， 表示属性是否可以被遍历（for-in）</p>
+</li>
+<li><p>value 用来设置属性的值</p>
+</li>
+<li><p>get和set方法，和writable一样都可以用来设置属性是否可以写</p>
+</li>
+</ul>
+<h2 id="严格模式"><a href="#严格模式" class="headerlink" title="严格模式"></a>严格模式</h2><h3 id="如何开启严格模式"><a href="#如何开启严格模式" class="headerlink" title="如何开启严格模式"></a>如何开启严格模式</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="meta"></span></div><div class="line">"use strict"</div><div class="line"><span class="meta"></span></div><div class="line">'use strict'</div></pre></td></tr></table></figure>
+<h3 id="严格模式中的特点"><a href="#严格模式中的特点" class="headerlink" title="严格模式中的特点"></a>严格模式中的特点</h3><ol>
+<li><p>声明变量必须使用var</p>
+</li>
+<li><p>对象的属性不能重名</p>
+</li>
+<li><p>函数的形参名不能重复</p>
+</li>
+<li><p>八进制常量不允许使用</p>
+</li>
+<li><p>eval有自己的作用域</p>
+</li>
+</ol>
+<h2 id="案例（歌曲管理，Tab栏切换）"><a href="#案例（歌曲管理，Tab栏切换）" class="headerlink" title="案例（歌曲管理，Tab栏切换）"></a>案例（歌曲管理，Tab栏切换）</h2><h2 id="事件兼容性处理"><a href="#事件兼容性处理" class="headerlink" title="事件兼容性处理"></a>事件兼容性处理</h2><h3 id="三种注册事件的方式"><a href="#三种注册事件的方式" class="headerlink" title="三种注册事件的方式"></a>三种注册事件的方式</h3><ol>
+<li><p>onclick简单形式</p>
+</li>
+<li><p>addEventListener(type, handler, useCapture)</p>
+</li>
+<li><p>attachEvent(type, handler)</p>
+</li>
+</ol>
+<h3 id="addEventListener和attachEvent的区别"><a href="#addEventListener和attachEvent的区别" class="headerlink" title="addEventListener和attachEvent的区别"></a>addEventListener和attachEvent的区别</h3><ol>
+<li><p>回调函数中获取事件对象的方式不一样，addEventListener通过回调函数的参数获取，attachEvent通过window.event获取</p>
+</li>
+<li><p>回调函数中的this指向不一致，addEventListener中this指向当前dom对象，attachEvent中this指向window</p>
+</li>
+</ol>
+<h3 id="兼容性处理的通用函数"><a href="#兼容性处理的通用函数" class="headerlink" title="兼容性处理的通用函数"></a>兼容性处理的通用函数</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">registerEvent</span>(<span class="params">ele, type, handler</span>)</span>&#123;</div><div class="line"></div><div class="line">     <span class="keyword">if</span>(ele.addEventListener)&#123;</div><div class="line"></div><div class="line">         ele.addEventListener(type, handler);</div><div class="line"></div><div class="line">     &#125;<span class="keyword">else</span> <span class="keyword">if</span>(ele.attachEvent)&#123;</div><div class="line"></div><div class="line">         ele.attachEvent(<span class="string">"on"</span> + type, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">             handler.call(ele, <span class="built_in">window</span>.event);</div><div class="line"></div><div class="line">         &#125;)</div><div class="line"></div><div class="line">     &#125;<span class="keyword">else</span>&#123;</div><div class="line"></div><div class="line">         ele[<span class="string">"on"</span> + type] = handler;</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line">&#125;</div></pre></td></tr></table></figure>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>lgbiao</h4>
+    <p>不想做记者的编辑不是一个好的前端工程师</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=不想做记者的编辑不是一个好的前端工程师 ?url=http://yoursite.com/2017/02/16/JavaScript高级/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2017/02/16/JavaScript高级/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/16/JavaScript高级/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/16/JavaScript高级/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2017/02/16/Ajax和jQuery/">
+        ← Ajax和jQuery
+    </a>
+    
+    <span class="icon-logo">•</span>
+    
+    <a class="older-posts" href="/2017/02/15/JavaScript基础/">
+        JavaScript基础 →
+    </a>
+    
+</nav>
+
+  <div id="comment" class="comments-area">
+    <h4 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h4>
+    
+</div>
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Moon</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/about/2014-09-11-mabao/"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>

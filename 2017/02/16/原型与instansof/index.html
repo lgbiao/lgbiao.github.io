@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>原型与instansof | Moon</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Moon">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Moon</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2017-02-16T13:37:52.000Z" itemprop="datePublished">
+          2017-02-16
+      </time>
+    
+</span>
+    <h1 class="post-title">原型与instansof</h1>
+    <section class="post-content">
+      <h1 id="原型-amp-amp-instansof"><a href="#原型-amp-amp-instansof" class="headerlink" title="原型&amp;&amp;instansof"></a>原型&amp;&amp;instansof</h1><h2 id="instansof关键字的使用"><a href="#instansof关键字的使用" class="headerlink" title="instansof关键字的使用"></a>instansof关键字的使用</h2><blockquote>
+<p>判断构造函数的原型是不是在对象的原型链上</p>
+</blockquote>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="comment">//语法：对象 instansof 构造函数</span></div></pre></td></tr></table></figure>
+<h2 id="创造函数的三种方式"><a href="#创造函数的三种方式" class="headerlink" title="创造函数的三种方式"></a>创造函数的三种方式</h2><ol>
+<li>函数声明</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">func</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol>
+<li>函数表达式</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> func = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</div><div class="line"></div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<ol>
+<li>使用Function</li>
+</ol>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> func = <span class="keyword">new</span> <span class="built_in">Function</span>();</div></pre></td></tr></table></figure>
+<h2 id="关于Function"><a href="#关于Function" class="headerlink" title="关于Function"></a>关于Function</h2><blockquote>
+<p>Function也是一个构造函数</p>
+</blockquote>
+<ul>
+<li>不传参数的情况(创建出来的是一个空的函数)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> func = <span class="keyword">new</span> <span class="built_in">Function</span>();</div><div class="line"></div><div class="line">func();</div></pre></td></tr></table></figure>
+<ul>
+<li>传一个参数的情况</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> func = <span class="keyword">new</span> <span class="built_in">Function</span>(<span class="string">"console.log('haha')"</span>);</div></pre></td></tr></table></figure>
+<ul>
+<li><p>传多个参数的情况</p>
+<ul>
+<li>最后一个为函数的主体，前面的都是函数的形参</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="keyword">var</span> func = <span class="keyword">new</span> <span class="built_in">Function</span>(参数一，参数二，...，函数主体);</div></pre></td></tr></table></figure>
+<h4 id="如何解决函数体过长的问题"><a href="#如何解决函数体过长的问题" class="headerlink" title="如何解决函数体过长的问题"></a>如何解决函数体过长的问题</h4><ol>
+<li><p>拼接字符串</p>
+</li>
+<li><p>使用模板引擎</p>
+</li>
+<li><p>使用``这种有兼容性的符号解决</p>
+</li>
+</ol>
+<h2 id="eval-函数"><a href="#eval-函数" class="headerlink" title="eval 函数"></a>eval 函数</h2><ul>
+<li>语法 eval(符合JS语法规范的字符串)</li>
+</ul>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="built_in">eval</span>(<span class="string">"var a = 10;"</span>)</div><div class="line"></div><div class="line"><span class="comment">//声明函数</span></div><div class="line"></div><div class="line"><span class="built_in">eval</span>(<span class="string">"function text()&#123;console.log('哈哈哈')&#125;"</span>)</div></pre></td></tr></table></figure>
+<ul>
+<li>作用：在代码执行过程中，将eval里面的代码执行</li>
+</ul>
+<h3 id="Function-和-eval-的异同点"><a href="#Function-和-eval-的异同点" class="headerlink" title="Function 和 eval 的异同点"></a>Function 和 eval 的异同点</h3><ol>
+<li><p>都可以将字符串转换成代码</p>
+</li>
+<li><p>Function转换成代码后仍是函数，需要手动执行。eval在代码执行过程中就执行了。</p>
+</li>
+</ol>
+<h3 id="Function-和-eval-的问题"><a href="#Function-和-eval-的问题" class="headerlink" title="Function 和 eval 的问题"></a>Function 和 eval 的问题</h3><ol>
+<li><p>执行效率问题</p>
+</li>
+<li><p>安全性问题 (xss脚本攻击)</p>
+</li>
+</ol>
+<h2 id="JSON-amp-amp-javascript-转换"><a href="#JSON-amp-amp-javascript-转换" class="headerlink" title="JSON &amp;&amp; javascript 转换"></a>JSON &amp;&amp; javascript 转换</h2><blockquote>
+<p>JavaScript Object Notation </p>
+</blockquote>
+<h3 id="JSON-与-JavaScript对象的异同"><a href="#JSON-与-JavaScript对象的异同" class="headerlink" title="JSON 与 JavaScript对象的异同"></a>JSON 与 JavaScript对象的异同</h3><ol>
+<li><p>都是键值对集合</p>
+</li>
+<li><p>JSON格式的数据必须要加引号，js对象不用</p>
+</li>
+</ol>
+<h3 id="如何将-JSON-转换成-JavaScript对象"><a href="#如何将-JSON-转换成-JavaScript对象" class="headerlink" title="如何将 JSON 转换成 JavaScript对象"></a>如何将 JSON 转换成 JavaScript对象</h3><ol>
+<li><p>使用JSON对象。（有兼容性问题）</p>
+</li>
+<li><p>JSON2.js</p>
+</li>
+<li><p>使用eval(但是会出现问题↓)</p>
+<ul>
+<li><p>eval会把json字符串中的{}当做代码段来处理，所以会报错</p>
+</li>
+<li><p>解决方案：</p>
+<pre><code>1. 把变量声明和JSON字符串一起拼接上去
+
+2. 在JSON字符串的两端添加小括号
+</code></pre></li>
+</ul>
+</li>
+</ol>
+<h3 id="Function原型链"><a href="#Function原型链" class="headerlink" title="Function原型链"></a>Function原型链</h3><ul>
+<li><p>JS中的所有的构造函数都是Function，包括Function自己</p>
+</li>
+<li><p>Function是自己的构造函数，也是自己的实例</p>
+</li>
+<li><p>Function构造函数在原型中担任两个角色，一个是构造函数，一个是实例。</p>
+</li>
+<li><p>在作为构造函数时，访问原型使用Function.prototype</p>
+</li>
+<li><p>在作为实例时，访问原型使用Function.__proto__</p>
+</li>
+</ul>
+<h2 id="argument对象"><a href="#argument对象" class="headerlink" title="argument对象"></a>argument对象</h2><blockquote>
+<p>伪数组=&gt;假数组：可以像数组一样被遍历，并且有自己的length属性</p>
+</blockquote>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>lgbiao</h4>
+    <p>不想做记者的编辑不是一个好的前端工程师</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=不想做记者的编辑不是一个好的前端工程师 ?url=http://yoursite.com/2017/02/16/原型与instansof/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2017/02/16/原型与instansof/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/16/原型与instansof/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/16/原型与instansof/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <a class="newer-posts" href="/2017/02/16/闭包和缓存/">
+        ← 闭包和缓存
+    </a>
+    
+    <span class="icon-logo">•</span>
+    
+    <a class="older-posts" href="/2017/02/16/Ajax和jQuery/">
+        Ajax和jQuery →
+    </a>
+    
+</nav>
+
+  <div id="comment" class="comments-area">
+    <h4 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h4>
+    
+</div>
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Moon</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/about/2014-09-11-mabao/"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>

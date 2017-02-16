@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html" charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+  <title>canvas基本介绍 | Moon</title>
+  <meta name="description" content="" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="MobileOptimized" content="320" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" type="text/css" href="/css/screen.css" />
+  <link rel="stylesheet" type="text/css" href="/css/style.css" />
+  <meta name="generator" content="Moon">
+
+  
+  
+  
+
+  
+</head>
+
+<!--
+<body class="post-template">
+-->
+<body class="home-template">
+<div id="perspective" class="perspective effect-movedown">
+  <div class="container">
+    <!-- wrapper -->
+    <div class="wrapper">
+
+      <header class="site-head"  style="background: #24282b url(/img/img-bg.jpg) 0 -20%" >
+    <div class="vertical">
+        <div class="site-head-content inner">
+             <a class="blog-logo" href="/"><img src="/img/logo.svg" alt="Blog Logo"/></a> 
+            <h1 class="blog-title">Moon</h1>
+            <h2 class="blog-description"><button id="showMenu">Show Menu</button></h2>
+        </div>
+    </div>
+</header>
+
+      
+
+<main class="content" role="main">
+  <article class="post">
+    <span class="post-meta">
+      <time datetime="2017-02-16T13:39:08.000Z" itemprop="datePublished">
+          2017-02-16
+      </time>
+    
+</span>
+    <h1 class="post-title">canvas基本介绍</h1>
+    <section class="post-content">
+      <h1 id="Canvas第一天"><a href="#Canvas第一天" class="headerlink" title="Canvas第一天"></a>Canvas第一天</h1><h2 id="canvas的基本介绍"><a href="#canvas的基本介绍" class="headerlink" title="canvas的基本介绍"></a>canvas的基本介绍</h2><blockquote>
+<p>canvas是html5中新增的一个画布标签。这个标签的默认宽高为300*150</p>
+</blockquote>
+<ol>
+<li><p>设置canvas标签的宽高需要使用表格的形式，width和height属性</p>
+</li>
+<li><p>设置canvas标签的宽高不建议使用css样式，因为会将画布拉伸</p>
+</li>
+<li><p>canvas标签中的内容，在支持canvas的浏览器中不会显示出来，而不支持的浏览器中，会将canvas处理为div，所以内容会显示出来</p>
+</li>
+<li><p>canvas比较通用，在所有支持canvas的浏览器中，canvas的表现（API）都是一致的，不存在兼容性问题</p>
+</li>
+<li><p>canvas只是用来展示图像的东西，画图需要使用画图工具（画图上下文）</p>
+</li>
+<li><p>一个页面中可以写多个canvas标签</p>
+</li>
+<li><p>在canvas标签内部书写的内容，如果浏览器支持canvas标签，那么这些内容会被忽略，</p>
+</li>
+<li><p>在canvas中一般会写一些提示，在当前浏览器不支持canvas的时候显示出来。</p>
+</li>
+</ol>
+<h2 id="canvas的基本使用"><a href="#canvas的基本使用" class="headerlink" title="canvas的基本使用"></a>canvas的基本使用</h2><ol>
+<li><p>首先要有canvas标签</p>
+</li>
+<li><p>获取canvas标签对象</p>
+</li>
+<li><p>通过canvas对象获取绘图上下文 canvas.getContext(“2d”) “webgl”–&gt;3d three.js</p>
+</li>
+<li><p>通过绘图上下文的moveTo方法设置绘图的起始点 ctx.moveTo(x, y)</p>
+</li>
+<li><p>通过绘图上下文的lineTo方法设置画线的终点 ctx.lineTo(x, y)</p>
+</li>
+<li><p>通过绘图上下文的stroke方法描线 ctx.stroke();</p>
+</li>
+</ol>
+<h2 id="绘制连续的线段"><a href="#绘制连续的线段" class="headerlink" title="绘制连续的线段"></a>绘制连续的线段</h2><blockquote>
+<p>lineTo方法可以将当前这个点保存，做为下次lineTo的起始点.</p>
+</blockquote>
+<h2 id="绘制曲线（只作为了解）"><a href="#绘制曲线（只作为了解）" class="headerlink" title="绘制曲线（只作为了解）"></a>绘制曲线（只作为了解）</h2><blockquote>
+<p>找到x和y的关系，循环遍历所有的x，通过x计算y，画出每一条线段，就能组合出一个曲线</p>
+</blockquote>
+<p>tips:贝塞尔曲线</p>
+<h2 id="closePath方法"><a href="#closePath方法" class="headerlink" title="closePath方法"></a>closePath方法</h2><blockquote>
+<p>closePath可以用来闭合路径，将最后一个lineTo的点和最后一个moveTo的点连接起来</p>
+</blockquote>
+<h2 id="fill方法"><a href="#fill方法" class="headerlink" title="fill方法"></a>fill方法</h2><blockquote>
+<p>用来填充闭合的图形，如果图形没有闭合，会自动闭合</p>
+</blockquote>
+<h2 id="非零环绕原则"><a href="#非零环绕原则" class="headerlink" title="非零环绕原则"></a>非零环绕原则</h2><p>在需要判断一个闭合的图形是不是会被填充的时候，从这个闭合的图形中拉出一条直线,判断经过直线的所有线段的方向，如果直线两边相反箭头的数量刚好相同，这个空间就不会被填充，反之则填充</p>
+<h2 id="路径的概念"><a href="#路径的概念" class="headerlink" title="路径的概念"></a>路径的概念</h2><p>路径中包含当前绘图上下文的所有状态，线宽，线的描边样式，填充样式</p>
+<p>一个路径中所有的状态都是一致的，想要更改状态，必须重新开辟路径</p>
+<h3 id="beginPath方法"><a href="#beginPath方法" class="headerlink" title="beginPath方法"></a>beginPath方法</h3><p>beginPath方法用来开辟新的路径。</p>
+<ol>
+<li><p>在使用beginPath开辟新的路径之后，之前的路径状态会被保存，不会重置</p>
+</li>
+<li><p>在使用beginPath开辟新的路径之后，起始点会被清除，需要重新手动的moveTo设置起始点</p>
+</li>
+</ol>
+<p>如果要使用新的状态，一定要使用beginPath，否则，会影响之前所有同一路径下的绘图</p>
+<h2 id="线型相关的属性"><a href="#线型相关的属性" class="headerlink" title="线型相关的属性"></a>线型相关的属性</h2><p>|名称|描述|</p>
+<p>|–|–|</p>
+<p>|lineWidth|设置绘图的线条宽度|</p>
+<p>|lineCap|设置线两端的样式，可选的值有 butt（默认） round(圆的) square（方的）|</p>
+<p>|lineJoin|设置两条线相交的拐点的样式，可选的值有 miter(默认尖的) round 圆的 bevel平的</p>
+<p>|strokeStyle|设置线条的颜色（可以使用所有css支持的颜色格式）|</p>
+<p>|fillStyle|设置填充的颜色（可以使用所有css支持的颜色格式）|</p>
+<p>|setLineDash|方法，用来设置虚线中空白和实线的宽度，参数为一个数组,数组中的元素，会被循环依次应用到虚线中的每一段线（虚线和实线）上|</p>
+<p>|getLineDash|方法，用来获取虚线的宽度设置，获取到值是一个数组，如果不是虚线，就是空数组，否则是这个虚线的宽度设置数组|</p>
+<p>|lineDashOffset|属性，设置虚线的偏移量，如果是正的就向左偏移，如果是负的，就向右偏移|</p>
+<h2 id="渐变色"><a href="#渐变色" class="headerlink" title="渐变色"></a>渐变色</h2><p>不直接划一整条线，而是用每一个像素拼起来一条直线，每一个像素线段的颜色根据所在位置去计算</p>
+<h2 id="面型对象封装线段"><a href="#面型对象封装线段" class="headerlink" title="面型对象封装线段"></a>面型对象封装线段</h2><figure class="highlight js"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div><div class="line">54</div><div class="line">55</div><div class="line">56</div><div class="line">57</div><div class="line">58</div><div class="line">59</div><div class="line">60</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">Line</span>(<span class="params">option</span>)</span>&#123;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.beginX = option.x;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.beginY = option.y;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.endX = option.x1;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.endY = option.y1;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.ctx = option.ctx;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.strokeStyle = option.strokeStyle;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.init();</div><div class="line"></div><div class="line"> &#125;</div><div class="line"></div><div class="line"> Line.prototype = &#123;</div><div class="line"></div><div class="line">     <span class="attr">constructor</span>: Line,</div><div class="line"></div><div class="line">     <span class="attr">init</span>:<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">         <span class="keyword">this</span>.ctx.beginPath();</div><div class="line"></div><div class="line">         <span class="keyword">this</span>.ctx.moveTo(<span class="keyword">this</span>.beginX, <span class="keyword">this</span>.beginY);</div><div class="line"></div><div class="line">         <span class="keyword">this</span>.ctx.lineTo(<span class="keyword">this</span>.endX, <span class="keyword">this</span>.endY);</div><div class="line"></div><div class="line">         <span class="keyword">this</span>.ctx.strokeStyle = <span class="keyword">this</span>.strokeStyle;</div><div class="line"></div><div class="line">     &#125;,</div><div class="line"></div><div class="line"> <span class="attr">draw</span>:<span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line"></div><div class="line">     <span class="keyword">this</span>.ctx.stroke();</div><div class="line"></div><div class="line">     &#125;</div><div class="line"></div><div class="line"> &#125;</div><div class="line"></div><div class="line"> <span class="keyword">var</span> line = <span class="keyword">new</span> Line(&#123;</div><div class="line"></div><div class="line">     <span class="attr">x</span>:<span class="number">100</span>,</div><div class="line"></div><div class="line">     <span class="attr">y</span>:<span class="number">100</span>,</div><div class="line"></div><div class="line">     <span class="attr">x1</span>:<span class="number">400</span>,</div><div class="line"></div><div class="line">     <span class="attr">y1</span>:<span class="number">100</span>,</div><div class="line"></div><div class="line">     <span class="attr">strokeStyle</span>:<span class="string">"pink"</span>,</div><div class="line"></div><div class="line">     <span class="attr">ctx</span>:ctx</div><div class="line"></div><div class="line"> &#125;);</div><div class="line"></div><div class="line">     line.draw();</div></pre></td></tr></table></figure>
+
+    </section>
+    <footer class="post-footer">
+      <section class="author">
+    <h4>lgbiao</h4>
+    <p>不想做记者的编辑不是一个好的前端工程师</p>
+</section>
+      <section class="share">
+    <h4>Share this post</h4>
+    <a class="icon-sina-weibo" href="http://v.t.sina.com.cn/share/share.php?title=不想做记者的编辑不是一个好的前端工程师 ?url=http://yoursite.com/2017/02/16/canvas基本介绍/" target="_blank">
+        <span class="hidden">weibo</span>
+    </a>
+    <a class="icon-twitter" href="http://twitter.com/share?url=http://yoursite.com/2017/02/16/canvas基本介绍/"
+       onclick="window.open(this.href, 'twitter-share', 'width=550,height=235');return false;">
+        <span class="hidden">Twitter</span>
+    </a>
+    <a class="icon-facebook" href="https://www.facebook.com/sharer/sharer.php?u=http://yoursite.com/2017/02/16/canvas基本介绍/"
+       onclick="window.open(this.href, 'facebook-share','width=580,height=296');return false;">
+        <span class="hidden">Facebook</span>
+    </a>
+    <a class="icon-google-plus" href="https://plus.google.com/share?url=http://yoursite.com/2017/02/16/canvas基本介绍/"
+       onclick="window.open(this.href, 'google-plus-share', 'width=490,height=530');return false;">
+        <span class="hidden">Google+</span>
+    </a>
+</section>
+
+    </footer>
+  </article>
+  <nav class="pagination" role="pagination">
+    
+    <span class="icon-logo">•</span>
+    
+    <a class="older-posts" href="/2017/02/16/闭包和缓存/">
+        闭包和缓存 →
+    </a>
+    
+</nav>
+
+  <div id="comment" class="comments-area">
+    <h4 class="title"><a href="#disqus_comments" name="disqus_comments">Comments</a></h4>
+    
+</div>
+
+</main>
+
+
+      
+<footer class="site-footer">
+  
+  <div class="inner">
+     <section class="copyright">All content copyright <a href="/">Moon</a> &copy; 2014 &bull; All rights reserved.</section>
+     <section class="poweredby">Proudly published with <a class="icon-ghost" href="http://zespia.tw/hexo/">Hexo</a></section>
+  </div>
+</footer>
+
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+<script type="text/javascript" src="/js/jquery.fitvids.js"></script>
+<script type="text/javascript" src="/js/index.js"></script>
+<script type="text/javascript" src="/js/menu.js"></script>
+
+
+
+
+
+  </div>
+</div>
+
+<nav  class="outer-nav top horizontal">
+
+          <a class="icon-home"  href="/"><span>Home</span></a>
+
+          <a class="icon-news"  href="/archive"><span>Archive</span></a>
+
+          <a class="icon-image"  href="/images"><span>Images</span></a>
+
+          <a class="icon-Favorites"  href="/favorites"><span>Favorites</span></a>
+
+          <a class="icon-mail"  href="/about/2014-09-11-mabao/"><span>Contact</span></a>
+
+</nav>
+
+</div>
+</body>
+</html>
